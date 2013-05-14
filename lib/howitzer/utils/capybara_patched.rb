@@ -1,5 +1,6 @@
 module CapybaraPatched
   class Capybara::Selenium::PatchedDriver < Capybara::Selenium::Driver
+    #TODO add RDoc documentation
     RETRY_ON = [
         ::Selenium::WebDriver::Error::UnhandledError,
         ::Selenium::WebDriver::Error::UnknownError,

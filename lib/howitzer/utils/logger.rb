@@ -3,7 +3,7 @@ require 'fileutils'
 
 module AppLogger
   include Log4r
-
+  #TODO add RDoc documentation
   @logger = Logger.new("ruby_log")
 
   #STDOUT

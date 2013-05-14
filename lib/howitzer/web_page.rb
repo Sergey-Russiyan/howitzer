@@ -1,6 +1,11 @@
 require "rspec/expectations"
 require 'howitzer/utils/locator_store'
 
+##
+#
+# Class that represents web-page object, your custom web-page classes should be inherited from this class
+#
+
 class WebPage
 
   BLANK_PAGE = 'about:blank'
