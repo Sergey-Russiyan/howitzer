@@ -9,6 +9,13 @@ class WebPage
   include LocatorStore
   include RSpec::Matchers
 
+  ##
+  # 
+  # Open web-site by given url
+  # @param url [String]             Url string that will be opened
+  # @return [WebPage]               New instance of current class
+  #
+  
   def self.open(url="#{app_url}#{self::URL}")
     log.info "Open #{self.name} page by '#{url}' url"
     retryable(tries: 2, logger: log, trace: true, on: Exception) do |retries|
@@ -18,10 +25,23 @@ class WebPage
     new
   end
 
+  ##
+  #
+  # Return new instance of current class
+  # @return [WebPage]                New instance of current class
+  #
+
   def self.given
     new
   end
-  
+
+  ##
+  #
+  # Fill in field that using Tinymce API
+  # @param name [String]              Frame name that contains Tinymce field
+  # @param options [Hash]             Not required options
+  #
+
   def tinymce_fill_in(name, options = {})
     if %w[selenium selenium_dev sauce].include? settings.driver
       page.driver.browser.switch_to.frame("#{name}_ifr")
@@ -31,8 +51,14 @@ class WebPage
       page.execute_script("tinyMCE.get('#{name}').setContent('#{options[:with]}')")
     end
   end
-  
-   def click_alert_box(flag)
+
+  ##
+  #
+  # Accept or decline JS alert box by given flag
+  # @param flag [TrueClass,FalseClass]            Determines accept or decline alert box
+  #
+
+  def click_alert_box(flag)
     if %w[selenium selenium_dev sauce].include? settings.driver
       if flag
         page.driver.browser.switch_to.alert.accept
@@ -47,11 +73,24 @@ class WebPage
       end
     end
   end
-  
+
+  ##
+  #
+  # Click on button or link using JS event call
+  # @param css_locator [String]                 Css locator of link or button
+  #
+
   def js_click(css_locator)
     page.execute_script("$('#{css_locator}').trigger('click')")
     sleep settings.timeout_tiny
   end
+
+  ##
+  #
+  # Wait for ajax request to be completed until run next action
+  # @param timeout [Integer]                    Seconds that will be waiting for ajax request to be completed until raise error
+  # @param message [String]                     Custom error message that will be raised
+  #
 
   def wait_for_ajax(timeout=settings.timeout_small, message=nil)
     end_time = ::Time.now + timeout
@@ -60,8 +99,14 @@ class WebPage
       sleep 0.25
     end
     log.error message || "Timed out waiting for ajax requests to complete"
-
   end
+
+  ##
+  #
+  # Wait for web-page to be loaded
+  # @param expected_url [String]                Url that will be waiting for
+  # @param time_out [Integer]                   Seconds that will be waiting for web-site to be loaded until raise error
+  #
 
   def wait_for_url(expected_url, time_out=settings.timeout_small)
     wait_until(time_out) do
@@ -72,15 +117,31 @@ class WebPage
     log.error "Current url: #{current_url}, expected:  #{expected_url}"
   end
 
+  ##
+  #
+  # Reload current opened web-page
+  #
+
   def reload
     log.info "Reload '#{current_url}'"
     visit current_url
   end
 
+  ##
+  #
+  # Return current opened url
+  # @return [String]            Current url
+  #
+
   def self.current_url
     page.current_url
   end
 
+  ##
+  #
+  # Return text of body section in current html element
+  # @return [String]            Body text
+  #
   def self.text
     page.find('body').text
   end
