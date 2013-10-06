@@ -9,14 +9,16 @@ Getting Started
 * [Redefining of the open method](#redefining-of-the-open-method)
 * [Good practices](#good-practices)
 * [Emails](#emails)
+* [Logging](#logging)
 * [BUILT-IN logging](#built-in-logging)
 * [Extended logging](#extended-logging)
 * [Data storage](#data-storage)
-* [DataGenerator::Gen](#datagenerator)
+* [DataGenerator](#datagenerator)
 * [Cucumber Tranformers](#cucumber-transformers)
 
 Pages
 ------
+[[Back To Top]](#jump-to-section)
 Pages - are classes that’s describe real web pages. For example,  'Home page' can be described as:
 
 ```ruby
@@ -37,7 +39,7 @@ end
 ```
 
 ### Validations
-
+[[Back To Top]](#jump-to-section)
 Pape Object pattern does not expect using any validations on UI driver level. But at the same time, each page must have
 some anchor in order to identify page exclusively.
 
@@ -93,7 +95,7 @@ Howitzer allows use all 3 validations, but only 1 is really required. If any val
 
 
 ### Locators ###
-
+[[Back To Top]](#jump-to-section)
 Locator is a search item (selector) of one or more elements on a 'Web page'.
 
 The table below lists the types of locators, the possible methods of searching and Capybara methods, which may be called.
@@ -128,7 +130,7 @@ end
 ```
 
 ### Pages with static information ###
-
+[[Back To Top]](#jump-to-section)
 In case of repeated static information in several different pages, it would be good decision to move up these methods into separate module.
 
 **Example:**
@@ -147,7 +149,7 @@ module TopMenu
 end
 ```
 #### Redefining of the *open* method #####
-
+[[Back To Top]](#jump-to-section)
 It is used when you need to open a page with additional parameters.
 
 **Example:**
@@ -160,7 +162,7 @@ end
 ```
 
 ### Good practices ###
-
+[[Back To Top]](#jump-to-section)
 
 **First rule:** do not get tied to the interface. Thats means that the name and description of the methods you should use a common phrases.
 
@@ -236,7 +238,7 @@ end
 
 Emails
 ------
-
+[[Back To Top]](#jump-to-section)
 _**Email**_ class uses `Mailgun` gem and allows you to work with the mailbox.
 Class corresponds to one letter. Used to test the notifications.
 
@@ -268,10 +270,11 @@ end
 
 Logging
 -------
+[[Back To Top]](#jump-to-section)
 *Howitzer* allows logging to the text file, HTML and output to the console.
 
 ### BUILT-IN logging ###
-
+[[Back To Top]](#jump-to-section)
 *Howitzer* uses the opportunity of Cucumber and RSpec generate HTML, JUnit logging. HTML provide ability to view the log in HTML, JUnit - use the logs in CI, accordingly.
 
 
@@ -315,6 +318,7 @@ cucumber - format html - out =. / log / log.html
 ```
 
 ### Extended logging ###
+[[Back To Top]](#jump-to-section)
 
 Extended logging to a text file and to the console also available.
 It uses the _log manager_ provided by **_log_** method.
@@ -383,11 +387,12 @@ Folders structure in RSpec & creating and running of Rake tasks
 =======
 Data Generators
 ---------------
+[[Back To Top]](#jump-to-section)
 
 Data generator allows to generate some data structures like User and store it to own Memory storage
 
 ### Data Storage ###
-
+[[Back To Top]](#jump-to-section)
 Data Storage is simple key value storage, which uses namespaces (for example, :user, :sauce, etc).
 
 This module has next methods:
@@ -420,7 +425,8 @@ In memory it looks like:
 }
 ```
 
-### DataGenerator::Gen ####
+### DataGenerator ####
+[[Back To Top]](#jump-to-section)
 
 This module has standard methods for generate test data. It has one standard data object for generate, because this is
 more common for almost all tests:
@@ -438,8 +444,8 @@ specific for your tests.
 When using Cucumber create Gen.rb file in **/features/support** directory. When using Rspec create
 _Gen.rb_ file in **/spec/support** directory.
 
-### Cucumber Transformers ###
-
+### Cucumber Transformers
+[[Back To Top]](#jump-to-section)
 In **/features/support/tranformers.rb** file are described Cucumber transformers (to see more info visit this one:
 [https://github.com/cucumber/cucumber/wiki/Step-Argument-Transforms](https://github.com/cucumber/cucumber/wiki/Step-Argument-Transforms)).
 We are using transformers to use generated data objects in tests. For example let’s imagine that we need to
