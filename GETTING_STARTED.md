@@ -19,6 +19,7 @@ Getting Started
 Pages
 ------
 [[Back To Top]](#jump-to-section)
+
 Pages - are classes that’s describe real web pages. For example,  'Home page' can be described as:
 
 ```ruby
@@ -40,7 +41,8 @@ end
 
 ### Validations
 [[Back To Top]](#jump-to-section)
-Pape Object pattern does not expect using any validations on UI driver level. But at the same time, each page must have
+
+Page Object pattern does not expect using any validations on UI driver level. But at the same time, each page must have
 some anchor in order to identify page exclusively.
 
 ```ruby
@@ -96,6 +98,7 @@ Howitzer allows use all 3 validations, but only 1 is really required. If any val
 
 ### Locators ###
 [[Back To Top]](#jump-to-section)
+
 Locator is a search item (selector) of one or more elements on a 'Web page'.
 
 The table below lists the types of locators, the possible methods of searching and Capybara methods, which may be called.
@@ -131,6 +134,7 @@ end
 
 ### Pages with static information ###
 [[Back To Top]](#jump-to-section)
+
 In case of repeated static information in several different pages, it would be good decision to move up these methods into separate module.
 
 **Example:**
@@ -150,6 +154,7 @@ end
 ```
 #### Redefining of the *open* method #####
 [[Back To Top]](#jump-to-section)
+
 It is used when you need to open a page with additional parameters.
 
 **Example:**
@@ -239,6 +244,7 @@ end
 Emails
 ------
 [[Back To Top]](#jump-to-section)
+
 _**Email**_ class uses `Mailgun` gem and allows you to work with the mailbox.
 Class corresponds to one letter. Used to test the notifications.
 
@@ -271,10 +277,12 @@ end
 Logging
 -------
 [[Back To Top]](#jump-to-section)
+
 *Howitzer* allows logging to the text file, HTML and output to the console.
 
 ### BUILT-IN logging ###
 [[Back To Top]](#jump-to-section)
+
 *Howitzer* uses the opportunity of Cucumber and RSpec generate HTML, JUnit logging. HTML provide ability to view the log in HTML, JUnit - use the logs in CI, accordingly.
 
 
@@ -393,6 +401,7 @@ Data generator allows to generate some data structures like User and store it to
 
 ### Data Storage ###
 [[Back To Top]](#jump-to-section)
+
 Data Storage is simple key value storage, which uses namespaces (for example, :user, :sauce, etc).
 
 This module has next methods:
@@ -446,6 +455,7 @@ _Gen.rb_ file in **/spec/support** directory.
 
 ### Cucumber Transformers
 [[Back To Top]](#jump-to-section)
+
 In **/features/support/tranformers.rb** file are described Cucumber transformers (to see more info visit this one:
 [https://github.com/cucumber/cucumber/wiki/Step-Argument-Transforms](https://github.com/cucumber/cucumber/wiki/Step-Argument-Transforms)).
 We are using transformers to use generated data objects in tests. For example let’s imagine that we need to
